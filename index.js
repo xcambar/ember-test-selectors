@@ -1,6 +1,15 @@
-/* jshint node: true */
-'use strict';
+/*jshint node:true*/
+var StringTestSelectorsTransform = require('./strip-test-selectors');
 
 module.exports = {
-  name: 'ember-test-selectors'
+  name: 'test-selectors',
+
+  included: function() {
+    if (this.app.environment === 'production') {
+      this.app.registry.add('htmlbars-ast-plugin', {
+        name: 'strip-test-selectors',
+        plugin: StringTestSelectorsTransform
+      });
+    }
+  }
 };

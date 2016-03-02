@@ -18,7 +18,7 @@ StripTestSelectorsTransform.prototype.transform = function(ast) {
           attributesToDelete.push(attribute.name);
         }
       });
-      
+
       if (attributesToDelete.length > 0) {
         _.remove(node.attributes, function(attribute) {
           return _.includes(attributesToDelete, attribute.name);

@@ -1,18 +1,20 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+var StripTestSelectorsTransform = require('./strip-test-selectors');
 
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
     // Add options here
   });
 
-  /*
-    This build file specifies the options for the dummy test app of this
-    addon, located in `/tests/dummy`
-    This build file does *not* influence how the addon or the app using it
-    behave. You most likely want to be modifying `./index.js` or app's build file
-  */
+  // add the StripTestSelectorsTransform to the registry, so the dummy app has
+  // it added in the HTMLBars build pipeline: all data-test-* attributes are
+  // therefore stripped
+  app.registry.add('htmlbars-ast-plugin', {
+    name: 'strip-test-selectors',
+    plugin: StripTestSelectorsTransform
+  });
 
   return app.toTree();
 };

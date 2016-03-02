@@ -1,7 +1,8 @@
 {
   "name": "ember-test-selectors",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Enabling better Test selectors in Ember.js applications",
+  "repository": "https://github.com/simplabs/ember-test-selectors",
   "directories": {
     "doc": "doc",
     "test": "tests"

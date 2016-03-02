@@ -5,7 +5,7 @@ module.exports = {
   name: 'test-selectors',
 
   included: function() {
-    if (this.app.env !== 'development' && this.app.env !== 'test') {
+    if (this.app.env === 'production') {
       this.app.registry.add('htmlbars-ast-plugin', {
         name: 'strip-test-selectors',
         plugin: StringTestSelectorsTransform

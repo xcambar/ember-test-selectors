@@ -91,6 +91,7 @@ delivered__:
   <h1>My great post</h1>
   <p>Bla bla…</p>
 </article>
+```
 
 ## License
 

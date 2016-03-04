@@ -4,8 +4,8 @@
 
 This Ember CLI Addon __removes all HTML 5 data attributes starting with
 `data-test-` in the `production` environment__. That allows using data
-attributes as selectors for integration and acceptance tests without polluting
-the generated markup of the production (or staging etc.) application.
+attributes as element selectors in integration and acceptance tests without
+polluting the markup that is delivered to the end user.
 
 ## Installation
 

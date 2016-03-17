@@ -13,10 +13,10 @@ test('it strips data-test-* attributes', function(assert) {
 });
 
 test('it works with multiple data-test-* attributes', function(assert) {
-  this.render(hbs`<span data-test-first="first-id" data-test-second"second-id" ></span>`);
+  this.render(hbs`<span data-test-first data-test-second"second-id" ></span>`);
 
   assert.equal(this.$('span').length, 1, 'the span is present');
-  assert.equal(this.$('span[data-test-first="first-id"]').length, 0, 'data-test-first is stripped');
+  assert.equal(this.$('span[data-test-first]').length, 0, 'data-test-first is stripped');
   assert.equal(this.$('span[data-test-second="second-id"]').length, 0, 'data-test-second is stripped');
 });
 

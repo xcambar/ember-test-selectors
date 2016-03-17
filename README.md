@@ -69,15 +69,15 @@ following template:
 ```
 
 one would select the post's title with the selector
-`*[data-test-selector="post-title"]`. While the selector is arguably a bit
-longer this approach clearly separates the test selectors from the rest of the
-markup and is resilient to change as it would simply be applied to the element
-rendering the post's title, regardless of the HTML structure, CSS classes etc.
-Also it allows to encode more data in the markup like e.g. the post's id:
+`*[data-test-post-title]`. While the selector is arguably a bit longer this
+approach clearly separates the test selectors from the rest of the markup and
+is resilient to change as it would simply be applied to the element rendering
+the post's title, regardless of the HTML structure, CSS classes etc. Also it
+allows to encode more data in the markup like e.g. the post's id:
 
 ```hbs
 <article>
-  <h1 data-test-selector="post-title" data-test-resource-id="{{post.id}}">{{post.title}}</h1>
+  <h1 data-test-post-title data-test-resource-id="{{post.id}}">{{post.title}}</h1>
   <p>{{post.body}}</p>
 </article>
 ```

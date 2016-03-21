@@ -1,6 +1,6 @@
 {
   "name": "ember-test-selectors",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Enabling better Test selectors in Ember.js applications",
   "repository": "https://github.com/simplabs/ember-test-selectors",
   "directories": {

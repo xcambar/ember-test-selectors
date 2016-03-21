@@ -93,14 +93,16 @@ delivered__:
 </article>
 ```
 
-## Testing
+## Test Helpers
 
-Ember Test Selectors comes with a test helper that can be used in acceptance & integration tests:
+`ember-test-selectors` comes with a test helper that can be used in acceptance
+and integration tests:
 
 * `testSelector('post-title')`: Returns a selector `[data-test-post-title]`
 * `testSelector('resource-id', '2')`: Returns a selector `[data-test-resource-id="2"]`
 
-The test helpers can be imported from the helpers/ember-test-selectors module in the application's namespace:
+The test helpers can be imported from the `helpers/ember-test-selectors`
+module:
 
 ```javascript
 import testSelector from '<app-name>/tests/helpers/ember-test-selectors';
@@ -108,14 +110,14 @@ import testSelector from '<app-name>/tests/helpers/ember-test-selectors';
 
 ### Acceptance Test Usage
 
-```javascript
+```js
 find(testSelector('post-title')) // => find('[data-test-post-title]')
 find(testSelector('selector', 'post-title')) // => find('[data-test-selector="post-title"]')
 ```
 
 ### Integration Test Usage
 
-```javascript
+```js
 this.$(testSelector('post-title')).click() // => this.$('[data-test-post-title]').click()
 this.$(testSelector('selector', 'post-title')).click() // => this.$('[data-test-selector="post-title"]').click()
 ```

@@ -93,6 +93,25 @@ delivered__:
 </article>
 ```
 
+## Configuartion
+To modify the default configuration, place a block called `ember-test-selectors`
+in your `ember-cli-build.js` file.
+
+### Options
+
+`environments`
+Defines the environments in which you want the test selectors to be removed.
+By default, selectors are only removed in the `production` environment. You
+might also want to remove them in other staging environments for testing.
+
+```javascript
+var app = new EmberApp({
+  'ember-test-selectors': {
+    environments: ['production', 'staging']
+  }
+});
+```
+
 ## Test Helpers
 
 `ember-test-selectors` comes with a test helper that can be used in acceptance

@@ -1,3 +1,7 @@
+# Unreleased
+
+* `environments` configuration option.
+
 # 0.0.2
 
 * Add the `testSelector` test helper that makes generating `data` attribute

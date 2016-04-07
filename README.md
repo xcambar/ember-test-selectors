@@ -93,7 +93,7 @@ delivered__:
 </article>
 ```
 
-## Configuartion
+## Configuration
 To modify the default configuration, place a block called `ember-test-selectors`
 in your `ember-cli-build.js` file.
 

@@ -1,12 +1,8 @@
-<<<<<<< Updated upstream
-# Unreleased
-
-* `environments` configuration option.
-=======
 # 0.0.3
 
+* The environments that ember-test-selectors strips `data-test-*` attributes
+  for can now be configured, see #14.
 * Fix the `package.json` to include the correct repository URL, see #16.
->>>>>>> Stashed changes
 
 # 0.0.2
 

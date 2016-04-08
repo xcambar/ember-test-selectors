@@ -2,7 +2,6 @@
   "name": "ember-test-selectors",
   "version": "0.0.2",
   "description": "Enabling better Test selectors in Ember.js applications",
-  "repository": "https://github.com/simplabs/ember-test-selectors",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +10,7 @@
     "test": "ember try:testall",
     "jshint": "mocha"
   },
-  "repository": "",
+  "repository": "https://github.com/simplabs/ember-test-selectors",
   "engines": {
     "node": ">= 0.10.0"
   },

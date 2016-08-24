@@ -63,7 +63,7 @@ following template:
 
 ```hbs
 <article>
-  <h1 data-test-selector="post-title">{{post.title}}</h1>
+  <h1 data-test-post-title>{{post.title}}</h1>
   <p>{{post.body}}</p>
 </article>
 ```
@@ -82,7 +82,7 @@ allows to encode more data in the markup like e.g. the post's id:
 </article>
 ```
 
-`ember-test-selectors` makes sure to remove all these `data` attributes in the
+`ember-test-selectors` makes sure to remove all these `data-test-*` attributes in the
 `production` environment so that __users will have perfectly clean HTML
 delivered__:
 

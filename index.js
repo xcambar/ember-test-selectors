@@ -14,7 +14,8 @@ module.exports = {
 
       registry.add('htmlbars-ast-plugin', {
         name: 'strip-test-selectors',
-        plugin: StripTestSelectorsTransform
+        plugin: StripTestSelectorsTransform,
+        baseDir: function() { return __dirname; }
       });
     }
   }

@@ -5,7 +5,9 @@ var StripTestSelectorsTransform = require('./strip-test-selectors');
 
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
-    // Add options here
+    'ember-test-selectors': {
+      environments: ['test']
+    }
   });
 
   // add the StripTestSelectorsTransform to the registry, so the dummy app has

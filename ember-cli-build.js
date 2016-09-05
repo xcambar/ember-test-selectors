@@ -5,7 +5,9 @@ var StripTestSelectorsTransform = require('./strip-test-selectors');
 
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
-    // Add options here
+    'ember-test-selectors': {
+      environments: ['test']
+    }
   });
 
   // add the StripTestSelectorsTransform to the registry, so the dummy app has
@@ -13,7 +15,8 @@ module.exports = function(defaults) {
   // therefore stripped
   app.registry.add('htmlbars-ast-plugin', {
     name: 'strip-test-selectors',
-    plugin: StripTestSelectorsTransform
+    plugin: StripTestSelectorsTransform,
+    baseDir: function() { return __dirname; }
   });
 
   return app.toTree();

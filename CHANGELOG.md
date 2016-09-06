@@ -1,3 +1,8 @@
+# 0.0.4 
+
+* Fixed a caching warning, see #22.
+* Fixed and improved tests, see #22.
+
 # 0.0.3
 
 * The environments that ember-test-selectors strips `data-test-*` attributes

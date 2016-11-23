@@ -1,3 +1,8 @@
+# 0.0.5
+
+* the `testSelector` helper now treats empty but non-none values (like `0`)
+  correctly, see #24.
+
 # 0.0.4 
 
 * Fixed a caching warning, see #22.

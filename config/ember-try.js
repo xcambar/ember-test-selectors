@@ -1,6 +1,6 @@
 /* eslint-env node */
 module.exports = {
-  command: 'npm run test:both',
+  command: 'npm test',
   useVersionCompatibility: true,
   scenarios: [
     {

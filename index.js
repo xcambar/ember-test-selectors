@@ -4,19 +4,38 @@
 module.exports = {
   name: 'test-selectors',
 
-  setupPreprocessorRegistry: function(type, registry) {
-    var appOptions = registry.app.options || {};
+  _assignOptions: function(app) {
+    var ui = app.project.ui;
+
+    var appOptions = app.options || {};
     var addonOptions = appOptions['ember-test-selectors'] || {};
-    var environments = addonOptions.environments || ['production'];
 
-    if (environments.indexOf(registry.app.env) !== -1) {
-      var StripTestSelectorsTransform = require('./strip-test-selectors');
+    if (addonOptions.environments) {
+      ui.writeDeprecateLine('The "environments" option in "ember-test-selectors" has been replaced ' +
+        'with the "strip" option. Use e.g. "strip: EmberApp.env() === \'production\'" instead to ' +
+        'recreate the old behavior.', false);
 
-      registry.add('htmlbars-ast-plugin', {
-        name: 'strip-test-selectors',
-        plugin: StripTestSelectorsTransform,
-        baseDir: function() { return __dirname; }
-      });
+      this._stripTestSelectors = (addonOptions.environments.indexOf(app.env) !== -1);
+    } else if ('strip' in addonOptions) {
+      this._stripTestSelectors = addonOptions.strip;
+    } else {
+      this._stripTestSelectors = app.tests;
+    }
+  },
+
+  setupPreprocessorRegistry: function(type, registry) {
+    if (type === 'parent') {
+      this._assignOptions(registry.app);
+
+      if (this._stripTestSelectors) {
+        var StripTestSelectorsTransform = require('./strip-test-selectors');
+
+        registry.add('htmlbars-ast-plugin', {
+          name: 'strip-test-selectors',
+          plugin: StripTestSelectorsTransform,
+          baseDir: function() { return __dirname; }
+        });
+      }
     }
   }
 };

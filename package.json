@@ -14,7 +14,7 @@
   "repository": "https://github.com/simplabs/ember-test-selectors",
   "scripts": {
     "build": "ember build",
-    "lint": "eslint config test-support tests *.js",
+    "lint": "eslint addon app config test-support tests *.js",
     "start": "ember server",
     "test": "npm run test:keep && npm run test:strip",
     "test:all": "ember try:each",
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
+    "broccoli-stew": "^1.4.0",
     "ember-ajax": "^2.4.1",
     "ember-cli": "2.10.0",
     "ember-cli-app-version": "^2.0.0",

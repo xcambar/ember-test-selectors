@@ -1,9 +1,13 @@
 import Ember from 'ember';
+import testSelector from 'ember-test-selectors';
 
-const {
-  isNone
-} = Ember;
+let message = 'Importing testSelector() from "<appname>/tests/helpers/ember-test-selectors" is deprecated. ' +
+  'Please import testSelector() from "ember-test-selectors" instead.';
 
-export default function testSelector(key, value) {
-  return isNone(value) ? `[data-test-${key}]` : `[data-test-${key}="${value}"]`;
-}
+Ember.deprecate(message, false, {
+  id: 'ember-test-selectors.test-selector-import',
+  until: '0.1.0',
+  url: 'https://github.com/simplabs/ember-test-selectors#test-helpers',
+});
+
+export default testSelector;

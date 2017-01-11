@@ -120,11 +120,10 @@ and integration tests:
 * `testSelector('post-title')`: Returns a selector `[data-test-post-title]`
 * `testSelector('resource-id', '2')`: Returns a selector `[data-test-resource-id="2"]`
 
-The test helpers can be imported from the `helpers/ember-test-selectors`
-module:
+The test helpers can be imported from the `ember-test-selectors` module:
 
 ```javascript
-import testSelector from '<app-name>/tests/helpers/ember-test-selectors';
+import testSelector from 'ember-test-selectors';
 ```
 
 ### Acceptance Test Usage

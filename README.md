@@ -1,79 +1,48 @@
-[![Build Status](https://travis-ci.org/simplabs/ember-test-selectors.svg?branch=master)](https://travis-ci.org/simplabs/ember-test-selectors)
+ember-test-selectors
+==============================================================================
 
-# ember-test-selectors
+[![Latest NPM release][npm-badge]][npm-badge-url]
+[![TravisCI Build Status][travis-badge]][travis-badge-url]
 
-This Ember CLI Addon __removes all HTML 5 data attributes starting with
-`data-test-` in the `production` environment__. That allows using data
-attributes as element selectors in integration and acceptance tests without
-polluting the markup that is delivered to the end user.
+[npm-badge]: https://img.shields.io/npm/v/ember-test-selectors.svg
+[npm-badge-url]: https://www.npmjs.com/package/ember-test-selectors
+[travis-badge]: https://img.shields.io/travis/simplabs/ember-test-selectors/master.svg?label=TravisCI
+[travis-badge-url]: https://travis-ci.org/simplabs/ember-test-selectors
 
-## Installation
+Enabling better element selectors in [Ember.js](http://emberjs.com) tests
+
+
+Features
+------------------------------------------------------------------------------
+
+- Provides a `testSelector()` function to help you select the right elements
+
+- Removes attributes starting with `data-test-` from HTML tags and
+  component/helper invocations in your templates for production builds
+
+- Removes properties starting with `data-test-` from your JS objects like
+  component classes for production builds
+
+- Automatically binds properties starting with `data-test-` on all components
+  for development/testing builds
+
+More information on why that is useful are available on our
+[blog](http://simplabs.com/blog/2016/03/04/ember-test-selectors.html)!
+
+
+Installation
+------------------------------------------------------------------------------
 
 ```bash
 ember install ember-test-selectors
 ```
 
-## Why use `data` attributes as test selectors?
 
-Integration and acceptance tests usually __interact with and assert on the
-presence of certain elements__ in the markup that an application renders. These
-elements are identified using CSS selectors. Most projects use one of three
-approaches for CSS selectors in tests:
+Usage
+------------------------------------------------------------------------------
 
-### Selectors based on HTML structure
-
-This approach simply selects elements by their position in the rendered HTML.
-For the following template:
-
-```html
-<article>
-  <h1>Post Title</h1>
-  <p>Post Body…</p<>
-</article>
-```
-
-one might select the post's title with the selector `article h1`. Of course
-this breaks when changing the `<h1>` to a `<h2>` while the functionality being
-tested is probably not affected by that change.
-
-### Selectors based on CSS classes
-
-This approach selects elements by CSS classes. For the following template:
-
-```hbs
-<article>
-  <h1 class="post-title">{{post.title}}</h1>
-  <p>{{post.body}}</p>
-</article>
-```
-
-one might select the post title with the selector `.post-title`. This of course
-breaks when the CSS class is changed or renamed, although that would only be a
-visual change which shouldn't affect the tests at all.
-
-Many projects use special CSS classes that are only used for testing to
-overcome this problem like `js-post-title`. While that approach is definitely
-more stable it is often hard to maintain. Also it is very hard to encode
-additional information in these CSS classes like e.g. the post's id.
-
-### Selectors based on `data` attributes
-
-This approach uses HTML 5 `data` attributes to select elements. For the
-following template:
-
-```hbs
-<article>
-  <h1 data-test-post-title>{{post.title}}</h1>
-  <p>{{post.body}}</p>
-</article>
-```
-
-one would select the post's title with the selector
-`*[data-test-post-title]`. While the selector is arguably a bit longer this
-approach clearly separates the test selectors from the rest of the markup and
-is resilient to change as it would simply be applied to the element rendering
-the post's title, regardless of the HTML structure, CSS classes etc. Also it
-allows to encode more data in the markup like e.g. the post's id:
+In your templates you are now able to use `data-test-*` attributes, which are
+automatically removed from `production` builds:
 
 ```hbs
 <article>
@@ -82,65 +51,86 @@ allows to encode more data in the markup like e.g. the post's id:
 </article>
 ```
 
-`ember-test-selectors` makes sure to remove all these `data-test-*` attributes in the
-`production` environment so that __users will have perfectly clean HTML
-delivered__:
+Once you've done that you can use the `testSelector()` function to create
+a CSS/jQuery selector that looks up the right elements:
 
-```html
-<article>
-  <h1>My great post</h1>
-  <p>Bla bla…</p>
-</article>
+```js
+import testSelector from 'ember-test-selectors';
+
+// in Acceptance Tests:
+
+find(testSelector('post-title')) // => find('[data-test-post-title]')
+find(testSelector('resource-id', '2')) // => find('[data-test-resource-id="2"]')
+
+// in Component Integration Tests:
+
+this.$(testSelector('post-title')).click() // => this.$('[data-test-post-title]').click()
+this.$(testSelector('resource-id', '2')).click() // => this.$('[data-test-resource-id="2"]').click()
 ```
 
-## Configuration
-To modify the default configuration, place a block called `ember-test-selectors`
-in your `ember-cli-build.js` file.
+### Usage in Components
 
-### Options
+You can also use `data-test-*` attributes on components:
 
-`environments`
-Defines the environments in which you want the test selectors to be removed.
-By default, selectors are only removed in the `production` environment. You
-might also want to remove them in other staging environments for testing.
+```handlebars
+{{comments-list data-test-comments-for=post.id}}
+```
 
-```javascript
+These `data-test-*` attributes will be bound automatically and available
+as data attributes on the `<div>` wrapping the component template:
+
+```html
+<div id="ember123" data-test-comments-for="42">
+  <!-- comments -->
+</div>
+```
+
+### Usage in Computed Properties
+
+Instead of assigning `data-test-comment-id` in this example template:
+
+```handlebars
+{{#each comments as |comment|}}
+  {{comment-list-item comment=comment data-test-comment-id=comment.id}}
+{{/each}}
+```
+
+you may also use computed properties on the component:
+
+```js
+export default Ember.Component({
+  comment: null,
+  'data-test-comment-id': Ember.computed.readOnly('comment.id'),
+});
+```
+
+As with `data-test-*` attributes in the templates, these properties, whether
+computed or not, will be removed automatically in production builds.
+
+
+Configuration
+------------------------------------------------------------------------------
+
+You can override when the `data-test-*` attributes should be stripped from the
+build by modifying your `ember-cli-build.js` file:
+
+```js
 var app = new EmberApp({
   'ember-test-selectors': {
-    environments: ['production', 'staging']
+    strip: false
   }
 });
 ```
 
-## Test Helpers
+`strip` accepts a `Boolean` value and defaults to `!app.tests`, which means
+that the attributes will be stripped for production builds, unless the build
+was triggered by `ember test`. That means that if you use
+`ember test --environment=production` the test selectors will still work, but
+for `ember build -prod` they will be stripped out.
 
-`ember-test-selectors` comes with a test helper that can be used in acceptance
-and integration tests:
 
-* `testSelector('post-title')`: Returns a selector `[data-test-post-title]`
-* `testSelector('resource-id', '2')`: Returns a selector `[data-test-resource-id="2"]`
-
-The test helpers can be imported from the `ember-test-selectors` module:
-
-```javascript
-import testSelector from 'ember-test-selectors';
-```
-
-### Acceptance Test Usage
-
-```js
-find(testSelector('post-title')) // => find('[data-test-post-title]')
-find(testSelector('selector', 'post-title')) // => find('[data-test-selector="post-title"]')
-```
-
-### Integration Test Usage
-
-```js
-this.$(testSelector('post-title')).click() // => this.$('[data-test-post-title]').click()
-this.$(testSelector('selector', 'post-title')).click() // => this.$('[data-test-selector="post-title"]').click()
-```
-
-## License
+License
+------------------------------------------------------------------------------
 
 ember-test-selectors is developed by and &copy;
 [simplabs GmbH](http://simplabs.com) and contributors. It is released under the

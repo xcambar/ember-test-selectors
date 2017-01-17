@@ -1,3 +1,9 @@
+# 0.1.1
+
+* Replaced initializer with IIFE in the vendor tree which fixes
+  usage in integration tests (#52)
+* Add warning when tagName is empty and data-test-* attributes are used (#53)
+
 # 0.1.0
 
 * Removed unnecessary `lodash` dependency (#37)

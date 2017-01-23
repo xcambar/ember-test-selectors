@@ -1,8 +1,12 @@
+# 0.2.0
+
+* Added support for `data-test-*` attributes without values on components (#55)
+
 # 0.1.1
 
 * Replaced initializer with IIFE in the vendor tree which fixes
   usage in integration tests (#52)
-* Add warning when tagName is empty and data-test-* attributes are used (#53)
+* Added warning when tagName is empty and data-test-* attributes are used (#53)
 
 # 0.1.0
 

@@ -47,5 +47,8 @@ if (!config.stripTestSelectors) {
     assert.equal(find('.test6').find('div[data-non-test]').length, 0, 'data-non-test does not exists');
   });
 
-}
+  test('it binds data-test-* attributes without values on components', function (assert) {
+    assert.equal(find('.test7').find('div[data-test-without-value]').length, 1, 'data-test-without-value exists');
+  });
 
+}

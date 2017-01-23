@@ -35,6 +35,14 @@ module.exports = {
           plugin: StripTestSelectorsTransform,
           baseDir: function() { return __dirname; }
         });
+      } else {
+        var TransformTestSelectorParamsToHashPairs = require('./transform-test-selector-params-to-hash-pairs');
+
+        registry.add('htmlbars-ast-plugin', {
+          name: 'transform-test-selector-params-to-hash-pairs',
+          plugin: TransformTestSelectorParamsToHashPairs,
+          baseDir: function() { return __dirname; }
+        });
       }
     }
   },

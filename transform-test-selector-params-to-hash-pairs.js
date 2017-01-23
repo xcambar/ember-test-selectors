@@ -12,10 +12,10 @@ function isTestSelectorParam(param) {
 
 TransformTestSelectorParamsToHashPairs.prototype.transform = function(ast) {
   var b = this.syntax.builders;
-  var traverse = this.syntax.traverse;
+  var walker = new this.syntax.Walker();
 
-  traverse(ast, {
-    MustacheStatement: function(node) {
+  walker.visit(ast, function(node) {
+    if (node.type === 'MustacheStatement' || node.type === 'BlockStatement') {
       var testSelectorParams = [];
       var otherParams = [];
 
@@ -24,7 +24,7 @@ TransformTestSelectorParamsToHashPairs.prototype.transform = function(ast) {
           testSelectorParams.push(param);
         } else {
           otherParams.push(param);
-        };
+        }
       });
 
       node.params = otherParams;

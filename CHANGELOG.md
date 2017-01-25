@@ -1,3 +1,7 @@
+# 0.2.1
+
+* Fixed support for Ember 2.11+ which is freezing `attributeBindings` now (#59)
+
 # 0.2.0
 
 * Added support for `data-test-*` attributes without values on components (#55)

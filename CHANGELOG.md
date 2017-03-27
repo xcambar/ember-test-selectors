@@ -1,3 +1,7 @@
+# 0.3.0
+
+* Added support for `ember-cli-babel@6` (#86)
+
 # 0.2.1
 
 * Fixed support for Ember 2.11+ which is freezing `attributeBindings` now (#59)

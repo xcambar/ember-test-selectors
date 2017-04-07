@@ -1,3 +1,8 @@
+# 0.3.1
+
+* Strip positional `data-test-*` attributes too (#88)
+* Move library sources to `test-support` tree (#89)
+
 # 0.3.0
 
 * Added support for `ember-cli-babel@6` (#86)

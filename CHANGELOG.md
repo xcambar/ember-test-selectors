@@ -1,3 +1,7 @@
+# 0.3.2
+
+* Revert `test-support` refactoring (#92)
+
 # 0.3.1
 
 * Strip positional `data-test-*` attributes too (#88)

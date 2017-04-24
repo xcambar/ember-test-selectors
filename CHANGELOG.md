@@ -1,3 +1,7 @@
+# 0.3.3
+
+* Fixed support for `ember-cli-babel@6` (#102)
+
 # 0.3.2
 
 * Revert `test-support` refactoring (#92)

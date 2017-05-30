@@ -1,3 +1,7 @@
+# 0.3.4
+
+* Added support for using test selectors in addon components (#116)
+
 # 0.3.3
 
 * Fixed support for `ember-cli-babel@6` (#102)

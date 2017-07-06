@@ -33,7 +33,8 @@ module.exports = {
       registry.add('htmlbars-ast-plugin', {
         name: 'strip-test-selectors',
         plugin: StripTestSelectorsTransform,
-        baseDir() { return __dirname; }
+        baseDir() { return __dirname; },
+        cacheKey() { return 'strip-test-selectors'; },
       });
     } else {
       let TransformTestSelectorParamsToHashPairs = require('./transform-test-selector-params-to-hash-pairs');
@@ -41,7 +42,8 @@ module.exports = {
       registry.add('htmlbars-ast-plugin', {
         name: 'transform-test-selector-params-to-hash-pairs',
         plugin: TransformTestSelectorParamsToHashPairs,
-        baseDir() { return __dirname; }
+        baseDir() { return __dirname; },
+        cacheKey() { return 'transform-test-selector-params-to-hash-pairs'; },
       });
     }
   },

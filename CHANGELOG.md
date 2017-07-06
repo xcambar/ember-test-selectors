@@ -1,3 +1,7 @@
+# 0.3.5
+
+* Fixed template transform caching which caused selectors to appear in production builds (#128)
+
 # 0.3.4
 
 * Added support for using test selectors in addon components (#116)

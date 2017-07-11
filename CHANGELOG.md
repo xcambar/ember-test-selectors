@@ -1,3 +1,7 @@
+# 0.3.6
+
+* Fixed Babel version detection (#131)
+
 # 0.3.5
 
 * Fixed template transform caching which caused selectors to appear in production builds (#128)

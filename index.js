@@ -83,7 +83,7 @@ module.exports = {
     }
 
     if (!this._stripTestSelectors) {
-      app.import('vendor/ember-test-selectors/patch-component.js');
+      host.import('vendor/ember-test-selectors/patch-component.js');
     }
   },
 

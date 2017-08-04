@@ -1,3 +1,8 @@
+# 0.3.7
+
+* Use `host` to `app.import()` (#138)
+* Deprecate `testSelector()` function (#134)
+
 # 0.3.6
 
 * Fixed Babel version detection (#131)

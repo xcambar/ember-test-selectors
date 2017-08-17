@@ -1,0 +1,23 @@
+<h2 id="title">Welcome to Ember</h2>
+
+{{data-test-component data-test-positional}}
+
+{{data-test-component data-test-multi-positional-first "param2"}}
+
+{{data-test-component "param1" data-test-multi-positional-last}}
+
+{{#data-test-component data-test-block-multi-positional "param2"}}
+{{/data-test-component}}
+
+{{data-test-component "param1" data-test-attr="value"}}
+
+{{#data-test-component "param1" data-test-block-attr="value"}}
+{{/data-test-component}}
+
+{{data-test-component "param1" data-test-multi-attr-first="value" data-test-multi-attr-last="value"}}
+
+{{data-test-component "param1" data-test-multi-attr="value" data-non-test-multi-attr="value"}}
+
+{{data-test-component "param1" data-test="value"}}
+
+{{outlet}}

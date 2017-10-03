@@ -46,7 +46,7 @@
     "eslint-plugin-ember": "^3.6.2",
     "eslint-plugin-qunit": "^3.2.0",
     "loader.js": "^4.5.1",
-    "mocha": "^3.4.2",
+    "mocha": "^4.0.0",
     "multidep": "^2.0.2"
   },
   "engines": {

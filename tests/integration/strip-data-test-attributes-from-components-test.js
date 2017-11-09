@@ -1,4 +1,5 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { moduleForComponent, test, skip } from 'ember-qunit';
+import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
 import config from 'dummy/config/environment';
@@ -7,27 +8,41 @@ moduleForComponent('print-test-attributes', 'StripTestSelectorsTransform plugin'
   integration: true
 });
 
+const { VERSION } = Ember;
+
+const EMBERS_WITHOUT_RELIABLE_POSITIONAL_PARAMS = [
+  '2.2',
+  '2.1',
+  '2.0',
+  '1.13',
+  '1.12',
+  '1.11',
+];
+
+const hasReliablePositionalParams = !EMBERS_WITHOUT_RELIABLE_POSITIONAL_PARAMS
+  .some(version => VERSION.indexOf(`${version}.`) === 0);
+
 if (config.stripTestSelectors) {
 
-  test('it strips data-test-* attributes from components with single positional params', function(assert) {
+  (hasReliablePositionalParams ? test : skip)('it strips data-test-* attributes from components with single positional params', function(assert) {
     this.render(hbs`{{print-test-attributes data-test-should-not-be}}`);
 
     assert.equal(this.$('.data-test-positional-params').text(), 0, 'there should be no params');
   });
 
-  test('it strips data-test-* attributes from components with positional params data-test-* as first param', function(assert) {
+  (hasReliablePositionalParams ? test : skip)('it strips data-test-* attributes from components with positional params data-test-* as first param', function(assert) {
     this.render(hbs`{{print-test-attributes data-test-should-not-be "param1"}}`);
 
     assert.equal(this.$('.data-test-positional-params').text(), 1, 'there should be only one param');
   });
 
-  test('it strips data-test-* attributes from components with multiple positional params', function(assert) {
+  (hasReliablePositionalParams ? test : skip)('it strips data-test-* attributes from components with multiple positional params', function(assert) {
     this.render(hbs`{{print-test-attributes "param1" data-test-should-not-be}}`);
 
     assert.equal(this.$('.data-test-positional-params').text(), 1, 'there should be only one param');
   });
 
-  test('it strips data-test-* attributes from components with block and multiple positional params', function(assert) {
+  (hasReliablePositionalParams ? test : skip)('it strips data-test-* attributes from components with block and multiple positional params', function(assert) {
     this.render(hbs`{{#print-test-attributes "param1" data-test-should-not-be}}{{/print-test-attributes}}`);
 
     assert.equal(this.$('.data-test-positional-params').text(), 1, 'there should be only one param');

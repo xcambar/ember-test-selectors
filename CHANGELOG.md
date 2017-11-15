@@ -1,10 +1,11 @@
-## Unreleased (2017-11-15)
+## v0.3.8 (2017-11-15)
 
 #### :bug: Bug Fix
-* [#155](https://github.com/simplabs/ember-test-selectors/pull/155) Fix positional to hash params transform for Ember 1.11/1.12. ([@Turbo87](https://github.com/Turbo87))
+* [#155](https://github.com/simplabs/ember-test-selectors/pull/155) Fix HBS transforms for Ember 1.11/1.12. ([@Turbo87](https://github.com/Turbo87))
 * [#150](https://github.com/simplabs/ember-test-selectors/pull/150) bugfix(transform): Disable handlebars transform pre-Ember-1.13. ([@pzuraq](https://github.com/pzuraq))
 
 #### :memo: Documentation
+* [#156](https://github.com/simplabs/ember-test-selectors/pull/156) Generate CHANGELOG using `lerna-changelog`. ([@Turbo87](https://github.com/Turbo87))
 * [#141](https://github.com/simplabs/ember-test-selectors/pull/141) make note about positional params. ([@kellyselden](https://github.com/kellyselden))
 * [#140](https://github.com/simplabs/ember-test-selectors/pull/140) Added a link to the deprecations warning to point to a codemod to help address it. ([@lorcan](https://github.com/lorcan))
 

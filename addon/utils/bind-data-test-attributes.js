@@ -27,18 +27,6 @@ export default function bindDataTestAttributes(component) {
     return;
   }
 
-  let computedBindings = component.attributeBindings && component.attributeBindings.isDescriptor;
-  if (computedBindings) {
-    let message = `ember-test-selectors could not bind data-test-* properties on ${component} ` +
-      `automatically because attributeBindings is a computed property.`;
-
-    warn(message, false, {
-      id: 'ember-test-selectors.computed-attribute-bindings',
-    });
-
-    return;
-  }
-
   let attributeBindings = component.getWithDefault('attributeBindings', []);
   if (!isArray(attributeBindings)) {
     attributeBindings = [attributeBindings];
@@ -48,5 +36,15 @@ export default function bindDataTestAttributes(component) {
 
   dataTestProperties.forEach(it => attributeBindings.push(it));
 
-  component.set('attributeBindings', attributeBindings);
+  try {
+    component.set('attributeBindings', attributeBindings);
+
+  } catch (error) {
+    let message = `ember-test-selectors could not bind data-test-* properties on ${component} ` +
+      `automatically because "attributeBindings" is a read-only property.`;
+
+    warn(message, false, {
+      id: 'ember-test-selectors.computed-attribute-bindings',
+    });
+  }
 }

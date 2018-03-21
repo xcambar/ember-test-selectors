@@ -18,53 +18,53 @@ if (!config.stripTestSelectors) {
   });
 
   test('it binds data-test-* attributes on components', function(assert) {
-    assert.equal(find('.test1').find('div[data-test-first]').length, 1, 'data-test-first exists');
-    assert.equal(find('.test1').find('div[data-test-first="foobar"]').length, 1, 'data-test-first has correct value');
+    assert.dom('.test1 div[data-test-first]').exists('data-test-first exists');
+    assert.dom('.test1 div[data-test-first="foobar"]').exists('data-test-first has correct value');
   });
 
   test('it binds data-test-* attributes on components in block form', function(assert) {
-    assert.equal(find('.test2').find('div[data-test-first]').length, 1, 'data-test-first exists');
-    assert.equal(find('.test2').find('div[data-test-first="foobar"]').length, 1, 'data-test-first has correct value');
+    assert.dom('.test2 div[data-test-first]').exists('data-test-first exists');
+    assert.dom('.test2 div[data-test-first="foobar"]').exists('data-test-first has correct value');
   });
 
   test('it works with multiple data-test-* attributes on components', function(assert) {
-    assert.equal(find('.test3').find('div[data-test-first]').length, 1, 'data-test-first exists');
-    assert.equal(find('.test3').find('div[data-test-first="foobar"]').length, 1, 'data-test-first has correct value');
-    assert.equal(find('.test3').find('div[data-test-second]').length, 1, 'data-test-second exists');
-    assert.equal(find('.test3').find('div[data-test-second="second"]').length, 1, 'data-test-second has correct value');
+    assert.dom('.test3 div[data-test-first]').exists('data-test-first exists');
+    assert.dom('.test3 div[data-test-first="foobar"]').exists('data-test-first has correct value');
+    assert.dom('.test3 div[data-test-second]').exists('data-test-second exists');
+    assert.dom('.test3 div[data-test-second="second"]').exists('data-test-second has correct value');
   });
 
   test('it leaves other data attributes untouched, when a data-test-* attribute is present as well on components', function(assert) {
-    assert.equal(find('.test4').find('div[data-test-first]').length, 1, 'data-test-first exists');
-    assert.equal(find('.test4').find('div[data-test-first="foobar"]').length, 1, 'data-test-first has correct value');
-    assert.equal(find('.test4').find('div[data-non-test]').length, 0, 'data-non-test does not exists');
+    assert.dom('.test4 div[data-test-first]').exists('data-test-first exists');
+    assert.dom('.test4 div[data-test-first="foobar"]').exists('data-test-first has correct value');
+    assert.dom('.test4 div[data-non-test]').doesNotExist('data-non-test does not exists');
   });
 
   test('it leaves data-test attribute untouched on components', function(assert) {
-    assert.equal(find('.test5').find('div[data-test]').length, 0, 'data-test does not exists');
+    assert.dom('.test5 div[data-test]').doesNotExist('data-test does not exists');
   });
 
   test('it leaves other data attributes untouched on components', function(assert) {
-    assert.equal(find('.test6').find('div[data-non-test]').length, 0, 'data-non-test does not exists');
+    assert.dom('.test6 div[data-non-test]').doesNotExist('data-non-test does not exists');
   });
 
   test('it binds data-test-* attributes with boolean values on components', function(assert) {
-    assert.equal(find('.test7').find('div[data-test-with-boolean-value]').length, 1, 'data-test-with-boolean-value exists');
+    assert.dom('.test7 div[data-test-with-boolean-value]').exists('data-test-with-boolean-value exists');
   });
 
   test('it binds data-test-* attributes without values on components', function(assert) {
-    assert.equal(find('.test8').find('div[data-test-without-value]').length, 1, 'data-test-without-value exists');
+    assert.dom('.test8 div[data-test-without-value]').exists('data-test-without-value exists');
   });
 
   test('it binds data-test-* attributes without values on block components', function(assert) {
-    assert.equal(find('.test9').find('div[data-test-without-value]').length, 1, 'data-test-without-value exists');
+    assert.dom('.test9 div[data-test-without-value]').exists('data-test-without-value exists');
   });
 
   (hasPositionalParams ? test : skip)('it leaves data-test attribute without value untouched on components', function(assert) {
-    assert.equal(find('.test10').find('div[data-test]').length, 0, 'data-test does not exists');
+    assert.dom('.test10 div[data-test]').doesNotExist('data-test does not exists');
   });
 
   test('it transforms data-test params to hash pairs on components', function(assert) {
-    assert.equal(find('.test11').find('div[data-test-something]').length, 1, 'data-test-something exists');
+    assert.dom('.test11 div[data-test-something]').exists('data-test-something exists');
   });
 }

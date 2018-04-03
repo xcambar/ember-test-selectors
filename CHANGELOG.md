@@ -1,3 +1,21 @@
+# Changelog
+
+## v0.3.9 (2018-04-03)
+
+#### :rocket: Enhancement
+* [#172](https://github.com/simplabs/ember-test-selectors/pull/172) Improve Ember 3.x compatibility. ([@marcoow](https://github.com/marcoow))
+
+#### :house: Internal
+* [#182](https://github.com/simplabs/ember-test-selectors/pull/182) Convert `broccoli-stew` to dev dependency. ([@Turbo87](https://github.com/Turbo87))
+* [#181](https://github.com/simplabs/ember-test-selectors/pull/181) Use `qunit-dom` assertions. ([@Turbo87](https://github.com/Turbo87))
+* [#179](https://github.com/simplabs/ember-test-selectors/pull/179) Update `yarn.lock` file. ([@Turbo87](https://github.com/Turbo87))
+* [#169](https://github.com/simplabs/ember-test-selectors/pull/169) testem: Use `--no-sandbox` on TravisCI. ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 3
+- Marco Otte-Witte ([marcoow](https://github.com/marcoow))
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+
+
 ## v0.3.8 (2017-11-15)
 
 #### :bug: Bug Fix

@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.0.0 (2018-04-26)
+
+#### :boom: Breaking Change
+* [#187](https://github.com/simplabs/ember-test-selectors/pull/187) Remove deprecated code. ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#186](https://github.com/simplabs/ember-test-selectors/pull/186) Converting imports to use ember modules. ([@scalvert](https://github.com/scalvert))
+
+#### Committers: 2
+- Steve Calvert ([scalvert](https://github.com/scalvert))
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+
+
 ## v0.3.9 (2018-04-03)
 
 #### :rocket: Enhancement
@@ -11,7 +24,7 @@
 * [#179](https://github.com/simplabs/ember-test-selectors/pull/179) Update `yarn.lock` file. ([@Turbo87](https://github.com/Turbo87))
 * [#169](https://github.com/simplabs/ember-test-selectors/pull/169) testem: Use `--no-sandbox` on TravisCI. ([@Turbo87](https://github.com/Turbo87))
 
-#### Committers: 3
+#### Committers: 2
 - Marco Otte-Witte ([marcoow](https://github.com/marcoow))
 - Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
@@ -32,7 +45,7 @@
 * [#152](https://github.com/simplabs/ember-test-selectors/pull/152) add acceptance test for params-to-hash-pairs transform. ([@marcoow](https://github.com/marcoow))
 * [#147](https://github.com/simplabs/ember-test-selectors/pull/147) Update "yarn.lock" file and "ember-cli-babel". ([@Turbo87](https://github.com/Turbo87))
 
-#### Committers: 6
+#### Committers: 5
 - Chris Garrett ([pzuraq](https://github.com/pzuraq))
 - Kelly Selden ([kellyselden](https://github.com/kellyselden))
 - Lorcan Coyle ([lorcan](https://github.com/lorcan))
@@ -52,7 +65,7 @@
 * [#135](https://github.com/simplabs/ember-test-selectors/pull/135) chore: switch to yarn Closes [#132](https://github.com/simplabs/ember-test-selectors/issues/132). ([@geekygrappler](https://github.com/geekygrappler))
 * [#133](https://github.com/simplabs/ember-test-selectors/pull/133) Update dependencies. ([@marcoow](https://github.com/marcoow))
 
-#### Committers: 4
+#### Committers: 3
 - Andy Brown ([geekygrappler](https://github.com/geekygrappler))
 - Kelly Selden ([kellyselden](https://github.com/kellyselden))
 - Marco Otte-Witte ([marcoow](https://github.com/marcoow))
@@ -75,7 +88,7 @@
 #### :bug: Bug Fix
 * [#128](https://github.com/simplabs/ember-test-selectors/pull/128) Add cacheKey() methods to template transforms. ([@Turbo87](https://github.com/Turbo87))
 
-#### Committers: 2
+#### Committers: 1
 - Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
 
@@ -90,7 +103,7 @@
 * [#113](https://github.com/simplabs/ember-test-selectors/pull/113) chore(package): update ember-cli-htmlbars to version 2.0.1. ([@Turbo87](https://github.com/Turbo87))
 * [#108](https://github.com/simplabs/ember-test-selectors/pull/108) Update "ember-cli" to v2.13.0. ([@Turbo87](https://github.com/Turbo87))
 
-#### Committers: 2
+#### Committers: 1
 - Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
 

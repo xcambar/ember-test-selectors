@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import { deprecate } from '@ember/application/deprecations';
 import testSelector from 'ember-test-selectors';
-
-const { deprecate } = Ember;
 
 let message = 'Importing testSelector() from "<appname>/tests/helpers/ember-test-selectors" is deprecated. ' +
   'Please import testSelector() from "ember-test-selectors" instead.';

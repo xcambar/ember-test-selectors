@@ -1,6 +1,5 @@
-import Ember from 'ember';
-
-const { isNone, deprecate } = Ember;
+import { isNone } from '@ember/utils';
+import { deprecate } from '@ember/application/deprecations';
 
 const message = `Using the "testSelector" helper function is deprecated as it obfuscates the selectors, making the tests harder to understand.
 Please use the actual attribute selectors instead, e.g. "[data-test-my-element]" instead of "testSelector('my-element')".`;

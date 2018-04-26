@@ -2,7 +2,10 @@ import { moduleForComponent, test, skip } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 import config from 'dummy/config/environment';
-import { hasReliablePositionalParams, hasEmberVersion } from 'dummy/version-checks';
+import {
+  hasReliablePositionalParams,
+  hasEmberVersion
+} from 'dummy/version-checks';
 
 moduleForComponent('print-test-attributes', 'StripTestSelectorsTransform plugin', {
   integration: true

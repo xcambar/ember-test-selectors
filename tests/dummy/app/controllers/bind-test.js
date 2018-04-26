@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import { hasPositionalParams } from 'dummy/version-checks';
-
-const { Controller } = Ember;
 
 export default Controller.extend({
   hasPositionalParams,

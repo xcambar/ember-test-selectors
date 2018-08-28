@@ -1,4 +1,4 @@
-import { warn } from '@ember/debug';
+import { assert, warn } from '@ember/debug';
 import { isArray } from '@ember/array';
 
 const TEST_SELECTOR_PREFIX = /data-test-.*/;
@@ -16,16 +16,14 @@ export default function bindDataTestAttributes(component) {
   }
 
   let tagName = component.get('tagName');
-  if (tagName === '') {
-    let message = `ember-test-selectors could not bind data-test-* properties on ${component} ` +
-      `automatically because tagName is empty.`;
 
-    warn(message, false, {
-      id: 'ember-test-selectors.empty-tag-name',
-    });
+  let message =
+    `ember-test-selectors could not bind data-test-* properties on ${component} ` +
+    'automatically because tagName is empty.';
 
-    return;
-  }
+  assert(message, tagName !== '', {
+    id: 'ember-test-selectors.empty-tag-name'
+  });
 
   let attributeBindings = component.getWithDefault('attributeBindings', []);
   if (!isArray(attributeBindings)) {
@@ -38,13 +36,13 @@ export default function bindDataTestAttributes(component) {
 
   try {
     component.set('attributeBindings', attributeBindings);
-
   } catch (error) {
-    let message = `ember-test-selectors could not bind data-test-* properties on ${component} ` +
+    let message =
+      `ember-test-selectors could not bind data-test-* properties on ${component} ` +
       `automatically because "attributeBindings" is a read-only property.`;
 
     warn(message, false, {
-      id: 'ember-test-selectors.computed-attribute-bindings',
+      id: 'ember-test-selectors.computed-attribute-bindings'
     });
   }
 }

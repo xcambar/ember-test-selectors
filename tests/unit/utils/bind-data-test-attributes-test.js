@@ -7,18 +7,20 @@ module('Unit | Utility | bind data test attributes');
 
 test('it adds missing attributeBindings array', function(assert) {
   let Fixture = EmberObject.extend({
-    'data-test-from-factory': 'foo',
+    'data-test-from-factory': 'foo'
   });
   let instance = Fixture.create({
-    'data-test-from-invocation': 'bar',
+    'data-test-from-invocation': 'bar'
   });
 
   assert.deepEqual(instance.get('attributeBindings'), undefined);
 
   bindDataTestAttributes(instance);
 
-  assert.deepEqual(instance.get('attributeBindings'),
-    ['data-test-from-invocation', 'data-test-from-factory']);
+  assert.deepEqual(instance.get('attributeBindings'), [
+    'data-test-from-invocation',
+    'data-test-from-factory'
+  ]);
 });
 
 test('it adds to existing attributeBindings array', function(assert) {
@@ -28,18 +30,22 @@ test('it adds to existing attributeBindings array', function(assert) {
     foo: 1,
     bar: 2,
 
-    'data-test-from-factory': 'foo',
+    'data-test-from-factory': 'foo'
   });
   let instance = Fixture.create({
-    'data-test-from-invocation': 'bar',
+    'data-test-from-invocation': 'bar'
   });
 
   assert.deepEqual(instance.get('attributeBindings'), ['foo', 'bar']);
 
   bindDataTestAttributes(instance);
 
-  assert.deepEqual(instance.get('attributeBindings'),
-    ['foo', 'bar', 'data-test-from-invocation', 'data-test-from-factory']);
+  assert.deepEqual(instance.get('attributeBindings'), [
+    'foo',
+    'bar',
+    'data-test-from-invocation',
+    'data-test-from-factory'
+  ]);
 });
 
 test('it converts existing attributeBindings string to array', function(assert) {
@@ -48,18 +54,21 @@ test('it converts existing attributeBindings string to array', function(assert) 
 
     foo: 1,
 
-    'data-test-from-factory': 'foo',
+    'data-test-from-factory': 'foo'
   });
   let instance = Fixture.create({
-    'data-test-from-invocation': 'bar',
+    'data-test-from-invocation': 'bar'
   });
 
   assert.deepEqual(instance.get('attributeBindings'), 'foo');
 
   bindDataTestAttributes(instance);
 
-  assert.deepEqual(instance.get('attributeBindings'),
-    ['foo', 'data-test-from-invocation', 'data-test-from-factory']);
+  assert.deepEqual(instance.get('attributeBindings'), [
+    'foo',
+    'data-test-from-invocation',
+    'data-test-from-factory'
+  ]);
 });
 
 test('it only adds data-test-* properties', function(assert) {
@@ -67,25 +76,27 @@ test('it only adds data-test-* properties', function(assert) {
     foo: 1,
     bar: 2,
 
-    'data-test-from-factory': 'foo',
+    'data-test-from-factory': 'foo'
   });
   let instance = Fixture.create({
     baz: 3,
 
-    'data-test-from-invocation': 'bar',
+    'data-test-from-invocation': 'bar'
   });
 
   assert.deepEqual(instance.get('attributeBindings'), undefined);
 
   bindDataTestAttributes(instance);
 
-  assert.deepEqual(instance.get('attributeBindings'),
-    ['data-test-from-invocation', 'data-test-from-factory']);
+  assert.deepEqual(instance.get('attributeBindings'), [
+    'data-test-from-invocation',
+    'data-test-from-factory'
+  ]);
 });
 
 test('it does not add a data-test property', function(assert) {
   let Fixture = EmberObject.extend({
-    'data-test': 'foo',
+    'data-test': 'foo'
   });
   let instance = Fixture.create();
 
@@ -104,12 +115,12 @@ test('it skips if attributeBindings is a computed property', function(assert) {
 
     foo: 5,
 
-    'data-test-from-factory': 'foo',
+    'data-test-from-factory': 'foo'
   });
   let instance = Fixture.create({
     prop: 'foo',
 
-    'data-test-from-invocation': 'bar',
+    'data-test-from-invocation': 'bar'
   });
 
   assert.deepEqual(instance.get('attributeBindings'), ['foo']);
@@ -117,20 +128,4 @@ test('it skips if attributeBindings is a computed property', function(assert) {
   bindDataTestAttributes(instance);
 
   assert.deepEqual(instance.get('attributeBindings'), ['foo']);
-});
-
-test('it skips if tagName is empty', function(assert) {
-  let Fixture = EmberObject.extend({
-    tagName: '',
-    'data-test-from-factory': 'foo',
-  });
-  let instance = Fixture.create({
-    'data-test-from-invocation': 'bar',
-  });
-
-  assert.deepEqual(instance.get('attributeBindings'), undefined);
-
-  bindDataTestAttributes(instance);
-
-  assert.deepEqual(instance.get('attributeBindings'), undefined);
 });
